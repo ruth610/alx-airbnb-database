@@ -80,4 +80,4 @@ It includes entities such as User, Property, Booking, Payment, Review, and Messa
 
 
 ```markdown
-![Airbnb ER Diagram](./ERD.png)
+[Airbnb ER Diagram](./ERD.png)
