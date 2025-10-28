@@ -12,7 +12,7 @@ ORDER BY total_bookings DESC;
 SELECT 
     property_id,
     COUNT(booking_id) AS total_bookings,
-    RANK() OVER (ORDER BY COUNT(booking_id) DESC) AS property_rank
+    RANK() OVER (ORDER BY COUNT(booking_id) DESC) AS booking_rank
 FROM bookings
 GROUP BY property_id
-ORDER BY property_rank;
+ORDER BY booking_rank;
