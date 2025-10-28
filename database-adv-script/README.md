@@ -25,3 +25,22 @@ Fetches all reviews and their associated properties, including reviews that are 
 SELECT users.*, bookings.*
 FROM users
 FULL OUTER JOIN bookings ON users.user_id = bookings.user_id;
+
+
+# SQL Aggregation and Window Functions
+
+## 🎯 Objective
+Use SQL **aggregation** and **window functions** to analyze booking and property data.
+
+---
+
+## 🧩 Task 1: Total Number of Bookings per User
+
+### ✅ Query
+```sql
+SELECT 
+    user_id,
+    COUNT(booking_id) AS total_bookings
+FROM bookings
+GROUP BY user_id
+ORDER BY total_bookings DESC;
