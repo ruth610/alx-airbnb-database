@@ -1,17 +1,16 @@
--- USERS TABLE INDEXES
--- ======================================
-CREATE INDEX idx_users_email ON users(email);
-CREATE INDEX idx_users_role ON users(role);
+-- These are columns commonly used in WHERE, JOIN, and ORDER BY clauses
 
--- ======================================
--- PROPERTIES TABLE INDEXES
--- ======================================
-CREATE INDEX idx_properties_host_id ON properties(host_id);
-CREATE INDEX idx_properties_location ON properties(location);
+-- Index on Users.email (used in login checks and joins)
+CREATE INDEX idx_users_email ON Users(email);
 
--- ======================================
--- BOOKINGS TABLE INDEXES
--- ======================================
-CREATE INDEX idx_bookings_user_id ON bookings(user_id);
-CREATE INDEX idx_bookings_property_id ON bookings(property_id);
-CREATE INDEX idx_bookings_status ON bookings(status);
+-- Index on Bookings.user_id (used in joins between Users and Bookings)
+CREATE INDEX idx_bookings_user_id ON Bookings(user_id);
+
+-- Index on Bookings.property_id (used in joins between Bookings and Properties)
+CREATE INDEX idx_bookings_property_id ON Bookings(property_id);
+
+-- Index on Properties.location (used in search filters)
+CREATE INDEX idx_properties_location ON Properties(location);
+
+-- Index on Bookings.booking_date (used in date range filters or ordering)
+CREATE INDEX idx_bookings_booking_date ON Bookings(booking_date);
