@@ -14,3 +14,10 @@ CREATE INDEX idx_properties_location ON Properties(location);
 
 -- Index on Bookings.booking_date (used in date range filters or ordering)
 CREATE INDEX idx_bookings_booking_date ON Bookings(booking_date);
+
+EXPLAIN ANALYZE
+SELECT u.name, COUNT(b.id) AS total_bookings
+FROM Users u
+JOIN Bookings b ON u.id = b.user_id
+GROUP BY u.name;
+
