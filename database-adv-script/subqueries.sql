@@ -9,12 +9,10 @@ INNER JOIN
 rating_avg ON properties.property_id = rating_avg.property_id
 WHERE rating_avg.average_rating > 4.0;
 
-SELECT users.*
+SELECT *
 FROM users
-INNER JOIN 
-    ( SELECT user_id, COUNT(*) as count_user
-        FROM bookings 
-        GROUP BY user_id
-    )
-    users_counting ON users.user_id = users_counting.user_id
-WHERE users_counting.count_user > 3;
+WHERE (
+    SELECT COUNT(*)
+    FROM bookings 
+    WHERE bookings.user_id = users.user_id
+) > 3;
